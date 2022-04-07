@@ -33,6 +33,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 function updateDisplay() {
     clearDisplay();
+    displayBooks();
+}
+
+function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         booksContainer.appendChild(createBookCard(i));
     }
