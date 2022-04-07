@@ -14,3 +14,9 @@ function Book(title, pages, read) {
     }
 }
 
+function addBookToLibrary(title, pages, read) {
+    // create a Book object
+      myLibrary.push(new Book(title, pages, read));
+  }
+  
+  
