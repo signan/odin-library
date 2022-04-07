@@ -32,6 +32,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function updateDisplay() {
+    clearDisplay();
     for (let i = 0; i < myLibrary.length; i++) {
         booksContainer.appendChild(createBookCard(i));
     }
@@ -61,11 +62,19 @@ function createBookCard(bookIndex) {
     return bookCard;
 }
 
+function clearDisplay() {
+    while (booksContainer.firstChild) {
+        booksContainer.removeChild(booksContainer.lastChild);
+      }
+}
 
 
 
 
 
 
-// addBookToLibrary('test1', 'tealb', 500, true);
-// addBookToLibrary('test2', 'taleb', 200, false);
+
+addBookToLibrary('test1', 'tealb', 500, true);
+addBookToLibrary('test2', 'taleb', 200, false);
+
+updateDisplay();
