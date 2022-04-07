@@ -33,31 +33,39 @@ function addBookToLibrary(title, author, pages, read) {
 
 function updateDisplay() {
     for (let i = 0; i < myLibrary.length; i++) {
-        let bookCard = document.createElement('div')
-        bookCard.id = `data-book${i}`;
-
-        let bookTitle = document.createElement('h3')
-        bookTitle.textContent = myLibrary[i].title;
-
-        let bookAuthor = document.createElement('h3')
-        bookAuthor.textContent = myLibrary[i].author;
-
-        let bookPages = document.createElement('h3')
-        bookPages.textContent = `${myLibrary[i].pages} pages`;
-
-        let bookRead = document.createElement('h3')
-        bookRead.textContent = myLibrary[i].isRead();
-
-        bookCard.appendChild(bookTitle);
-        bookCard.appendChild(bookAuthor);
-        bookCard.appendChild(bookPages);
-        bookCard.appendChild(bookRead);
-        booksContainer.appendChild(bookCard);
-        booksContainer.appendChild(document.createElement('br'))
+        booksContainer.appendChild(createBookCard(i));
     }
 }
 
-addBookToLibrary('test1', 'tealb', 500, true);
-addBookToLibrary('test2', 'taleb', 200, false);
+function createBookCard(bookIndex) {
+    let bookCard = document.createElement('div')
+    bookCard.id = `data-book${bookIndex}`;
 
-updateDisplay();
+    let bookTitle = document.createElement('h3')
+    bookTitle.textContent = myLibrary[bookIndex].title;
+
+    let bookAuthor = document.createElement('h3')
+    bookAuthor.textContent = myLibrary[bookIndex].author;
+
+    let bookPages = document.createElement('h3')
+    bookPages.textContent = `${myLibrary[bookIndex].pages} pages`;
+
+    let bookRead = document.createElement('h3')
+    bookRead.textContent = myLibrary[bookIndex].isRead();
+
+    bookCard.appendChild(bookTitle);
+    bookCard.appendChild(bookAuthor);
+    bookCard.appendChild(bookPages);
+    bookCard.appendChild(bookRead);
+
+    return bookCard;
+}
+
+
+
+
+
+
+
+// addBookToLibrary('test1', 'tealb', 500, true);
+// addBookToLibrary('test2', 'taleb', 200, false);
