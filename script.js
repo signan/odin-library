@@ -44,7 +44,7 @@ function displayBooks() {
 
 function createBookCard(bookIndex) {
     let bookCard = document.createElement('div')
-    bookCard.id = `data-book${bookIndex}`;
+    bookCard.setAttribute('data-book-index', bookIndex)
 
     let bookTitle = document.createElement('h3')
     bookTitle.textContent = myLibrary[bookIndex].title;
@@ -61,6 +61,7 @@ function createBookCard(bookIndex) {
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.classList.add('delete-btn');
+    deleteButton.addEventListener('click', deleteBook);
 
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
@@ -69,6 +70,12 @@ function createBookCard(bookIndex) {
     bookCard.appendChild(deleteButton);
 
     return bookCard;
+}
+
+function deleteBook() {
+    let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
+    myLibrary.splice(bookIndex, 1)
+    updateDisplay();
 }
 
 function clearDisplay() {
