@@ -58,10 +58,15 @@ function createBookCard(bookIndex) {
     let bookRead = document.createElement('h3')
     bookRead.textContent = myLibrary[bookIndex].isRead();
 
+    let deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.classList.add('delete-btn');
+
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
     bookCard.appendChild(bookRead);
+    bookCard.appendChild(deleteButton);
 
     return bookCard;
 }
