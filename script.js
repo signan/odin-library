@@ -27,17 +27,27 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function updateDisplay() {
+    // wipe the display then repopulate it
     clearDisplay();
     displayBooks();
 }
 
+function clearDisplay() {
+    // removes all book cards. it doesn't alter the library array
+    while (booksContainer.firstChild) {
+        booksContainer.removeChild(booksContainer.lastChild);
+      }
+}
+
 function displayBooks() {
+    // create all book cards
     for (let i = 0; i < myLibrary.length; i++) {
         booksContainer.appendChild(createBookCard(i));
     }
 }
 
 function createBookCard(bookIndex) {
+    //create individual book card 
     let book = myLibrary[bookIndex]
 
     let bookCard = document.createElement('div');
@@ -85,15 +95,6 @@ function deleteBook() {
     myLibrary.splice(bookIndex, 1)
     updateDisplay();
 }
-
-function clearDisplay() {
-    while (booksContainer.firstChild) {
-        booksContainer.removeChild(booksContainer.lastChild);
-      }
-}
-
-
-
 
 
 
