@@ -1,0 +1,8 @@
+.books-container {
+    display: flex;
+}
+
+.book {
+    flex: 1;
+    background-color: red;
+}
