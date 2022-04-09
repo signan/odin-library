@@ -17,12 +17,7 @@ function Book(title, author, pages, read) {
     }
 
     this.isRead = function() {
-        if (this.read) {
-            return `read`;
-        }
-        else {
-            return `not read yet`;
-        }
+        return this.read;
     }
 }
 
@@ -43,20 +38,33 @@ function displayBooks() {
 }
 
 function createBookCard(bookIndex) {
-    let bookCard = document.createElement('div')
-    bookCard.setAttribute('data-book-index', bookIndex)
+    let book = myLibrary[bookIndex]
 
-    let bookTitle = document.createElement('h3')
-    bookTitle.textContent = myLibrary[bookIndex].title;
+    let bookCard = document.createElement('div');
+    bookCard.setAttribute('data-book-index', book);
+    bookCard.classList.add('book');
 
-    let bookAuthor = document.createElement('h3')
-    bookAuthor.textContent = myLibrary[bookIndex].author;
+    let bookTitle = document.createElement('h3');
+    bookTitle.textContent = book.title;
+    bookTitle.classList.add('title');
 
-    let bookPages = document.createElement('h3')
-    bookPages.textContent = `${myLibrary[bookIndex].pages} pages`;
+    let bookAuthor = document.createElement('h3');
+    bookAuthor.textContent = book.author;
+    bookAuthor.classList.add('author');
 
-    let bookRead = document.createElement('h3')
-    bookRead.textContent = myLibrary[bookIndex].isRead();
+    let bookPages = document.createElement('h3');
+    bookPages.textContent = `${book.pages} pages`;
+    bookPages.classList.add('pages');
+
+    let bookRead = document.createElement('h3');
+    if (book.isRead()) {
+        bookRead.textContent = "read";
+        bookRead.classList.add('status-read');
+    }
+    else {
+        bookRead.textContent = "not read yet";
+        bookRead.classList.add('status-notread');
+    }
 
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
@@ -92,5 +100,9 @@ function clearDisplay() {
 
 addBookToLibrary('test1', 'tealb', 500, true);
 addBookToLibrary('test2', 'taleb', 200, false);
+addBookToLibrary('test3', 'tealb', 300, true);
+addBookToLibrary('test4', 'taleb', 400, false);
+addBookToLibrary('test5', 'tealb', 700, true);
+addBookToLibrary('test6', 'taleb', 1000, false);
 
 updateDisplay();
