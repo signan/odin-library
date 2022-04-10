@@ -1,29 +1,19 @@
 let myLibrary = [];
-let booksContainer = document.querySelector('.books-container')
+const booksContainer = document.querySelector('.books-container');
+const newBookButton = document.querySelector('#new-book-btn');
+const newBookForm = document.querySelector('#new-book-form');
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.status = status;
 
-    this.info = function() {
-        if (this.read) {
-            return `${this.title}, ${pages} pages, read.`;
-        }
-        else {
-            return `${this.title}, ${pages} pages, not read yet.`;
-        }
-    }
-
-    this.isRead = function() {
-        return this.read;
-    }
 }
 
-function addBookToLibrary(title, author, pages, read) {
+function addBookToLibrary(title, author, pages, status) {
   // create a Book object
-    myLibrary.push(new Book(title, author, pages, read));
+    myLibrary.push(new Book(title, author, pages, status));
 }
 
 function updateDisplay() {
@@ -66,14 +56,14 @@ function createBookCard(bookIndex) {
     bookPages.textContent = `${book.pages} pages`;
     bookPages.classList.add('pages');
 
-    let bookRead = document.createElement('h3');
-    if (book.isRead()) {
-        bookRead.textContent = "read";
-        bookRead.classList.add('status-read');
+    let bookStatus = document.createElement('h3');
+    if (book.status) {
+        bookStatus.textContent = "read";
+        bookStatus.classList.add('status-read');
     }
     else {
-        bookRead.textContent = "not read yet";
-        bookRead.classList.add('status-notread');
+        bookStatus.textContent = "not read yet";
+        bookStatus.classList.add('status-notread');
     }
 
     let deleteButton = document.createElement('button');
@@ -84,7 +74,7 @@ function createBookCard(bookIndex) {
     bookCard.appendChild(bookTitle);
     bookCard.appendChild(bookAuthor);
     bookCard.appendChild(bookPages);
-    bookCard.appendChild(bookRead);
+    bookCard.appendChild(bookStatus);
     bookCard.appendChild(deleteButton);
 
     return bookCard;
@@ -92,11 +82,9 @@ function createBookCard(bookIndex) {
 
 function deleteBook() {
     let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
-    myLibrary.splice(bookIndex, 1)
+    myLibrary.splice(bookIndex, 1);
     updateDisplay();
 }
-
-
 
 
 addBookToLibrary('test1', 'tealb', 500, true);
