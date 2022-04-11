@@ -93,6 +93,14 @@ function submitBook() {
     const newAuthor = document.querySelector('#author').value;
     const newPages = document.querySelector('#pages').value;
     const newStatus = document.querySelector('#status').value;
+    if (newTitle === '' || newAuthor === '' || newPages === '') {
+        alert('please fill all the information');
+        return;
+    }
+    if (isNaN(newPages)) {
+        alert('pages should be a number')
+        return;
+    }
     addBookToLibrary(newTitle, newAuthor, newPages, newStatus);
     updateDisplay();
 }
