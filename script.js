@@ -1,7 +1,7 @@
 let myLibrary = [];
 const booksContainer = document.querySelector('.books-container');
-const newBookButton = document.querySelector('#new-book-btn');
-const newBookForm = document.querySelector('#new-book-form');
+const newBookButton = document.querySelector('#submit');
+newBookButton.addEventListener('click', submitBook);
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -83,6 +83,16 @@ function createBookCard(bookIndex) {
 function deleteBook() {
     let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
     myLibrary.splice(bookIndex, 1);
+    updateDisplay();
+}
+
+function submitBook() {
+    console.log('test')
+    const newTitle = document.querySelector('#name').value;
+    const newAuthor = document.querySelector('#author').value;
+    const newPages = document.querySelector('#pages').value;
+    const newStatus = document.querySelector('#status').value;
+    addBookToLibrary(newTitle, newAuthor, newPages, newStatus);
     updateDisplay();
 }
 
