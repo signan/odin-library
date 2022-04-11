@@ -8,8 +8,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <button id="new-book-btn">new book</button>
+    <form id="new-book-form">
+        <input type="text" id="name">
+        <input type="text" id="author">
+        <input type="text" id="pages">
+        <select id="status">
+            <option value="Read" selected>Read</option>
+            <option value="not-read">Unread</option>
+          </select>
+        <input type="button" value="Add Book" id="submit">
+    </form>
     <div class="books-container">
-        
+
     </div>
     
 </body>
