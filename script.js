@@ -1,6 +1,5 @@
 let myLibrary = [];
 const booksContainer = document.querySelector('.books-container');
-const newBookButton = document.querySelector('#new-book-btn');
 const submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', submitBook);
 
@@ -9,7 +8,6 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
-
 
 }
 
