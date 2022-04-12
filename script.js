@@ -10,6 +10,7 @@ function Book(title, author, pages, status) {
     this.pages = pages;
     this.status = status;
 
+
 }
 
 function addBookToLibrary(title, author, pages, status) {
@@ -88,11 +89,11 @@ function deleteBook() {
 }
 
 function submitBook() {
-    console.log('test')
     const newTitle = document.querySelector('#name').value;
     const newAuthor = document.querySelector('#author').value;
     const newPages = document.querySelector('#pages').value;
     const newStatus = document.querySelector('#status').value;
+
     if (newTitle === '' || newAuthor === '' || newPages === '') {
         alert('please fill all the information');
         return;
@@ -101,16 +102,33 @@ function submitBook() {
         alert('pages should be a number')
         return;
     }
+
+    if (bookAlreadyExists(newTitle, newAuthor, newPages)) {
+        alert('duplicate, will not be added');
+        return;
+    }
+    
     addBookToLibrary(newTitle, newAuthor, newPages, newStatus);
     updateDisplay();
+}
+
+function bookAlreadyExists(title, author, pages) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        let book = myLibrary[i];
+        if (title === book.title && author === book.author && pages === book.pages) {
+            return true;
+        }
+    }
 }
 
 
 addBookToLibrary('test1', 'tealb', 500, true);
 addBookToLibrary('test2', 'taleb', 200, false);
+addBookToLibrary('test2', 'taleb', 200, false);
 addBookToLibrary('test3', 'tealb', 300, true);
 addBookToLibrary('test4', 'taleb', 400, false);
 addBookToLibrary('test5', 'tealb', 700, true);
 addBookToLibrary('test6', 'taleb', 1000, false);
+
 
 updateDisplay();
