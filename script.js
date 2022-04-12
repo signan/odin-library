@@ -95,16 +95,16 @@ function submitBook() {
     const newStatus = document.querySelector('#status').value;
 
     if (newTitle === '' || newAuthor === '' || newPages === '') {
-        alert('please fill all the information');
+        alert('Please fill all the information');
         return;
     }
     if (isNaN(newPages)) {
-        alert('pages should be a number')
+        alert('Please enter a number for pages')
         return;
     }
 
     if (bookAlreadyExists(newTitle, newAuthor, newPages)) {
-        alert('duplicate, will not be added');
+        alert('This book is already in the library');
         return;
     }
     
