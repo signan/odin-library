@@ -57,6 +57,7 @@ function createBookCard(bookIndex) {
     bookPages.classList.add('pages');
 
     let bookStatus = document.createElement('p');
+    bookStatus.addEventListener('click', toggleStatus);
     bookStatus.classList.add('status');
     if (book.status) {
         bookStatus.textContent = "read";
@@ -79,6 +80,20 @@ function createBookCard(bookIndex) {
     bookCard.appendChild(deleteButton);
 
     return bookCard;
+}
+
+function toggleStatus() {
+    // get the index of the book
+    // check if the status value and flip it
+    // update the display
+    let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
+    if (myLibrary[bookIndex].status) {
+        myLibrary[bookIndex].status = false;
+    }
+    else {
+        myLibrary[bookIndex].status = true
+    }
+    updateDisplay();
 }
 
 function deleteBook() {
