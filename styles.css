@@ -34,7 +34,10 @@
     text-align: center;
     padding: 15px 0px 15px 0px;
     margin-top: auto;
+}
 
+.status:hover {
+    filter: brightness(150%);
 }
 
 .read {
