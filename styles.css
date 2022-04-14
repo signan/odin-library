@@ -1,8 +1,58 @@
 .books-container {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
 }
 
 .book {
-    flex: 1;
+    background-color: lime;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-bottom:blue;
+    width: 200px;
+    height: 200px;
+}
+
+.book * {
+    margin: 0px;
+}
+
+.title {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: auto;
+}
+
+.status {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px 15px 0px;
+    margin-top: auto;
+
+}
+
+.read {
+    background-color: green;
+}
+
+.not-read {
     background-color: red;
 }
+
+.delete-btn {
+    width: 100%;
+    border: 0px;
+}
+
+
+/* should be card style
+title and other info should use p tag instead of h3. leave the styling to css
+the bg-color of the card should be related to the status of the book. if it's read, it will be green
+the status should be changable by click it. it will be a button. or maybe a toggle?
+the card shouldn't be  */
