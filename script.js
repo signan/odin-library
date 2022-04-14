@@ -41,29 +41,30 @@ function createBookCard(bookIndex) {
     let book = myLibrary[bookIndex]
 
     let bookCard = document.createElement('div');
-    bookCard.setAttribute('data-book-index', book);
+    bookCard.setAttribute('data-book-index', bookIndex);
     bookCard.classList.add('book');
 
-    let bookTitle = document.createElement('h3');
+    let bookTitle = document.createElement('p');
     bookTitle.textContent = book.title;
     bookTitle.classList.add('title');
 
-    let bookAuthor = document.createElement('h3');
+    let bookAuthor = document.createElement('p');
     bookAuthor.textContent = book.author;
     bookAuthor.classList.add('author');
 
-    let bookPages = document.createElement('h3');
+    let bookPages = document.createElement('p');
     bookPages.textContent = `${book.pages} pages`;
     bookPages.classList.add('pages');
 
-    let bookStatus = document.createElement('h3');
+    let bookStatus = document.createElement('p');
+    bookStatus.classList.add('status');
     if (book.status) {
         bookStatus.textContent = "read";
-        bookStatus.classList.add('status-read');
+        bookStatus.classList.add('read');
     }
     else {
         bookStatus.textContent = "not read yet";
-        bookStatus.classList.add('status-notread');
+        bookStatus.classList.add('not-read');
     }
 
     let deleteButton = document.createElement('button');
