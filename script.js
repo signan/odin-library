@@ -98,8 +98,10 @@ function toggleStatus() {
 
 function deleteBook() {
     let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
-    myLibrary.splice(bookIndex, 1);
-    updateDisplay();
+    if (confirm(`are you sure you want to delete "${myLibrary[bookIndex].title}"?`)) {
+        myLibrary.splice(bookIndex, 1);
+        updateDisplay();    
+    }
 }
 
 function submitBook() {
@@ -136,13 +138,13 @@ function bookAlreadyExists(title, author, pages) {
 }
 
 
-addBookToLibrary('test1', 'tealb', 500, true);
-addBookToLibrary('test2', 'taleb', 200, false);
-addBookToLibrary('test2', 'taleb', 200, false);
-addBookToLibrary('test3', 'tealb', 300, true);
-addBookToLibrary('test4', 'taleb', 400, false);
-addBookToLibrary('test5', 'tealb', 700, true);
-addBookToLibrary('test6', 'taleb', 1000, false);
+addBookToLibrary('A ​Court of Silver Flames', 'Sarah J. Maas', 757, true);
+addBookToLibrary('Under the Whispering Door', 'T.J. Klune', 373, false);
+addBookToLibrary('The ​Crown of Gilded Bones', 'Jennifer L. Armentrout', 654, false);
+addBookToLibrary('She Who Became the Sun', 'Shelley Parker-Chan', 416, true);
+addBookToLibrary('Ariadne', 'Jennifer Saint', 320, false);
+addBookToLibrary('The Last Graduate', 'Naomi Novik', 388, true);
+addBookToLibrary('The Book of Magic', 'Alice Hoffman', 400, false);
 
 
 updateDisplay();
