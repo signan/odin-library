@@ -8,6 +8,14 @@ function Book(title, author, pages, status) {
     this.author = author;
     this.pages = pages;
     this.status = status;
+    this.toggleStatus = () => {
+        if (this.status) {
+            this.status = false;
+        }
+        else {
+            this.status = true
+        }
+    }
 
 }
 
@@ -87,12 +95,7 @@ function toggleStatus() {
     // check if the status value and flip it
     // update the display
     let bookIndex = event.currentTarget.parentNode.getAttribute('data-book-index');
-    if (myLibrary[bookIndex].status) {
-        myLibrary[bookIndex].status = false;
-    }
-    else {
-        myLibrary[bookIndex].status = true
-    }
+    myLibrary[bookIndex].toggleStatus();
     updateDisplay();
 }
 
