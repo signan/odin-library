@@ -3,12 +3,15 @@ const booksContainer = document.querySelector('.books-container');
 const submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', submitBook);
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.toggleStatus = () => {
+class Book {
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;    
+    }
+
+    toggleStatus() {
         if (this.status) {
             this.status = false;
         }
@@ -16,12 +19,29 @@ function Book(title, author, pages, status) {
             this.status = true
         }
     }
-
 }
 
+// function Book(title, author, pages, status) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.status = status;
+//     this.toggleStatus = () => {
+//         if (this.status) {
+//             this.status = false;
+//         }
+//         else {
+//             this.status = true
+//         }
+//     }
+// }
+
 function addBookToLibrary(title, author, pages, status) {
-  // create a Book object
-    myLibrary.push(new Book(title, author, pages, status));
+    // create a Book object
+    let book = new Book(title, author, pages, status)
+    console.log(book);
+    
+    myLibrary.push(book);
 }
 
 function updateDisplay() {
@@ -55,7 +75,7 @@ function createBookCard(bookIndex) {
     let bookTitle = document.createElement('p');
     bookTitle.textContent = book.title;
     bookTitle.classList.add('title');
-
+    
     let bookAuthor = document.createElement('p');
     bookAuthor.textContent = book.author;
     bookAuthor.classList.add('author');
